@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Clock</title>
+</head>
+
+<body>
+    <style>
+        html {
+            background: #282828;
+        }
+
+        .outerdiv {
+            background: -webkit-radial-gradient(circle farthest-corner at center center, #ffffff 0%, #ff1100 100%);
+            background: -o-radial-gradient(circle farthest-corner at center center, #ffffff 0%, #ff1100 100%);
+            background: -moz-radial-gradient(circle farthest-corner at center center, #ffffff 0%, #ff1100 100%);
+            background: radial-gradient(circle farthest-corner at center center, #ffffff 0%, #ff1100 100%);
+            border-radius: 50%;
+            width: 30rem;
+            height: 30rem;
+            position: relative;
+            padding: 2rem;
+            border: 7px solid #282828;
+            box-shadow: -4px -4px 10px rgba(67, 67, 67, 0.5),
+                inset 4px 4px 10px rgba(0, 0, 0, 0.5),
+                inset -4px -4px 10px rgba(67, 67, 67, 0.5),
+                4px 4px 10px rgba(0, 0, 0, 0.3);
+            margin: 50px auto;
+
+        }
+
+        #hrs,
+        #min,
+        #sec {
+            position: absolute;
+            background: black;
+            border-radius: 10px;
+            transform-origin: bottom;
+            left: 48.85%;
+        }
+
+        #hrs {
+            width: 1.8%;
+            height: 25%;
+            top: 25%;
+            left: 48.85%;
+            opacity: 0.85;
+        }
+
+        #min {
+            width: 1.6%;
+            height: 30%;
+            top: 19%;
+            left: 48.9%;
+            opacity: 0.8;
+        }
+
+        #sec {
+            width: 1%;
+            height: 40%;
+            top: 9%;
+            left: 49.25%;
+            opacity: 0.9;
+        }
+
+        #top,
+        #left,
+        #bottom,
+        #right,#center {
+            position: absolute;
+            background: black;
+            border-radius: 10px;
+        }
+
+        #top {
+            transform-origin: top;
+            left: 49.2%;
+            height: 5%;
+            width: 1%;
+        }
+
+        #left {
+            transform-origin: left;
+            left: 5.85%;
+            height: 1%;
+            width: 5%;
+            top: 48.5%;
+        }
+
+        #right {
+            transform-origin: right;
+            left: 88.85%;
+            height: 1%;
+            width: 5%;
+            top: 48.5%;
+        }
+
+        #bottom {
+            transform-origin: top;
+            left: 49.2%;
+            height: 5%;
+            width: 1%;
+            top: 88%;
+        }
+        #center{
+            height: 5%;
+            width: 5%;
+            border-radius: 50%;
+            top: 47%;
+            left: 47%;
+        }
+    </style>
+    <div class="outerdiv">
+        <div class="innerdiv">
+            <div id="top"></div>
+            <div id="left"></div>
+            <div id="right"></div>
+            <div id="bottom"></div>
+            <div id="center"></div>
+            <div class="hands">
+                <div id="hrs"></div>
+                <div id="min"></div>
+                <div id="sec"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    setInterval(() => {
+        d = new Date();
+        h = d.getHours();
+        m = d.getMinutes();
+        s = d.getSeconds();
+
+        h_r = 30 * h + m / 2 + (0.5 * s) / 60;
+        m_r = 6 * m + s / 10;
+        s_r = 6 * s;
+
+        let sc = document.getElementById("sec");
+        sc.style.transform = `rotate(${s_r}deg)`;
+        hrs.style.transform = `rotate(${h_r}deg)`;
+        min.style.transform = `rotate(${m_r}deg)`;
+
+    }, 1000);
+</script>
+
+</html>
